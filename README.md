@@ -65,7 +65,7 @@ You have covered most of the fundamental coding concepts for statically typed la
 
 Exploring these concepts will help you gain a more comprehensive understanding of statically typed languages like Java and C#.
 
-ChatGPT Generated Response
+ChatGPT Generated Response:
 
 It seems like you have covered most of the fundamental coding concepts for statically typed languages like Java and C#. However, there are a few additional concepts that you might find useful:
 
