@@ -6,7 +6,9 @@ important: polymorphism & inheritance
 --------------------------------------
 
 GPT-4 Generated:
+
 [Covered in AP Computer Science A]
+
 Week 1: C# Fundamentals
 1. Set up development environment (Visual Studio, .NET Core)
 2. Learn C# syntax, data types, and variables
@@ -14,6 +16,7 @@ Week 1: C# Fundamentals
 4. Study functions, classes, and objects
 
 [Polymorphism & Inheritance covered but not as in-depth]
+
 Week 2: C# Advanced Concepts
 1. Learn inheritance, interfaces, and polymorphism
 2. Study exception handling and debugging
