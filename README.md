@@ -1,7 +1,7 @@
 # api-test-csharp
 making api using asp.net,
 need to learn:
-Interfaces, Namespaces, Structures, Enums
+Interfaces, Namespaces, Structures, Enums, and Atrributes
 important: polymorphism & inheritance
 --------------------------------------
 
