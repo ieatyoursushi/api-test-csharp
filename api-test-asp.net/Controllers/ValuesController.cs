@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,15 +14,23 @@ namespace api_test_asp.net.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "value1", "value2", RandomDataController.generator(10) };
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            if (id > 1000) return "too big value: " + id;
+            return "goldilock value: " + id;
         }
+        [HttpGet("25")]
+        public ActionResult<int> Gets()
+        {
+            return 25;
+        }
+        // GET api/value/int/int
+
 
         // POST api/values
         [HttpPost]
