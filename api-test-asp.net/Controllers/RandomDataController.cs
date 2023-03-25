@@ -2,52 +2,62 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace api_test_asp.net.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class RandomDataController : ControllerBase
     {
-        // GET api/values
+        public static string generator(int length)
+        {
+            if (length == 0) return "";
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            Random random = new Random();
+            string randomString = "";
+            for(int i = 0; i < length; i++)
+            {
+                randomString += chars.ToCharArray()[random.Next(0, chars.Length)];
+            }
+            return randomString;
+            //return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
+        }
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2", RandomDataController.generator(10) };
+            try
+            {
+                const int length = 10;
+                string[] labels = new string[length];
+                for (int i = 0; i < labels.Length; i++)
+                {
+                    labels[i] = generator(length - i);
+                    Debug.WriteLine("test " + i);
+                }
+                return Ok(labels);
+            }
+            catch(Exception err)
+            {
+                return BadRequest(err.Message);
+            }
         }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            if (id > 1000) return "too big value: " + id;
-            return "goldilock value: " + id;
-        }
-        [HttpGet("25")]
-        public ActionResult<int> Gets()
-        {
-            return 25;
-        }
-        // GET api/value/int/int
-
-
-        // POST api/values
+        //wrong implementation
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] string inc_buffer)
         {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            try
+            {
+                return inc_buffer == null ? Ok("no data sent") : Ok(inc_buffer);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
+ 
+ 
